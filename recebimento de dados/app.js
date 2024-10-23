@@ -1,4 +1,6 @@
 const express = require('express');
+
+// Para que seja possível utilizar o corpo de requisições
 const bodyParser = require('body-parser');
 
 const app = express();
