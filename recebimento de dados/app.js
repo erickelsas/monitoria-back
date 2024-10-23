@@ -29,8 +29,8 @@ router.get('/:n1/:n2', (req, res) => {
     res.send(`<p>A soma de ${n1} e ${n2} é igual a ${n1 + n2}</p>`);
 });
 
-// Rota GET com query parameters (localhost:3000/?n1=1&n2=3)
-router.get('/', (req, res) => {
+// Rota GET com query parameters (localhost:3000/query?n1=1&n2=3)
+router.get('/query', (req, res) => {
     // Recebe a query string e transforma-os em números decimais
     const n1 = parseFloat(req.query.n1);
     const n2 = parseFloat(req.query.n2);
