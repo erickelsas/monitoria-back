@@ -28,6 +28,9 @@ router.get('/detalhes', (req, res) => {
 // Usar o router para o caminho base '/empresa'
 app.use('/empresa', router);
 
+//redirecionar requisições de / para /empresa/sobre
+app.get('/', (req, res) => res.redirect('/empresa/sobre'));
+
 // Iniciar o servidor na porta 3000
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
