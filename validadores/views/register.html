@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário de Registro - Joi</h2>
+        <form method="POST" action="/joi">
+            <label for="username">Nome de usuário:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="age">Idade:</label>
+            <input type="number" id="age" name="age"><br>
+
+            <label for="category">Categoria:</label>
+            <select id="category" name="category">
+                <option value="student">Estudante</option>
+                <option value="professional">Profissional</option>
+                <option value="other">Outro</option>
+            </select><br>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
