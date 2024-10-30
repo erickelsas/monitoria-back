@@ -65,7 +65,7 @@ app.post('/express-validator', [
     // Processamento da validação
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.send({ errors: errors.array() });
     }
     
     res.send('Registro processado com sucesso!');
