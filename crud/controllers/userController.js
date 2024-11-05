@@ -1,5 +1,6 @@
 const userService = require('../services/userService');
 
+// TODAS as rotas aqui chamam a função equivalente na camada de serviço, verifica se o resultado é o esperado e retorna status de sucesso (2XX) ou error (4XX)
 exports.getAllUsers = (req, res) => {
     const users = userService.getAllUsers();
 
@@ -35,7 +36,7 @@ exports.deleteUser = (req, res) => {
     const deletedUser = userService.deleteUser(parseInt(req.params.id, 10));
 
     if(!deletedUser){
-        return res.status(404).json({ message: 'Usuário não encontrad.' });
+        return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
 
     res.status(200).json(deletedUser);

@@ -28,6 +28,7 @@ exports.updateUser = (id, updatedUser) => {
         return null;
     }
 
+    // desestructuring: sobrescreve as chaves presentes em updatedUser
     users[index] = { ...users[index], ...updatedUser };
 
     return users[index];
@@ -42,5 +43,6 @@ exports.deleteUser = (id) => {
         return null;
     }
 
+    // retorna o usuário deletado e o remove do array
     return users.splice(index,1)[0];
 };
