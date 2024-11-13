@@ -4,22 +4,34 @@ const doc = {
     info: {
         version: "1.0.0",
         title: "Exemplo de Swagger",
-        description: "Códigos de exemplo para uma aplicação utilizando swagger"
+        description: "Códigos de exemplo para uma aplicação utilizando Swagger"
     },
-    servers: [
+    host: 'localhost:3000',
+    basePath: '/',
+    schemes: ['http'],
+    consumes: ['application/json'],
+    produces: ['application/json'],
+    tags: [
         {
-            url: 'http://localhost:3000'
+        name: 'Login',
+        description: 'Rota relativa a autentificação, gera o Bearer Token'
+        },
+        {
+        name: 'Usuários',
+        description: 'Rotas relativas a usuários'
+        },
+        {
+        name: 'Contatos',
+        description: 'Rotas relativas a contatos'
         }
     ],
     components: {
         schemas: {
             // Schema do User
             User: {
-                type: "object",
-                properties: {
                     id: {
                         type: "integer",
-                        description: "ID do usuário"
+                        description: "ID do usuário",
                     },
                     username: {
                         type: "string",
@@ -43,13 +55,9 @@ const doc = {
                         description: "Indica se o usuário é administrador"
                     }
                 },
-                required: ["username", "name", "password", "isAdmin"]
-            },
 
             // Schema do Contact
             Contact: {
-                type: "object",
-                properties: {
                     id: {
                         type: "integer",
                         description: "ID do contato"
@@ -67,20 +75,14 @@ const doc = {
                         type: "string",
                         description: "Número de telefone do contato",
                         pattern: "^[0-9]{10,15}$"
-                    },
-                    message: {
-                        type: "string",
-                        description: "Mensagem do contato",
-                        maxLength: 500
                     }
                 },
-                required: ["userId", "email", "phone"]
-            },
         },
         securitySchemes: {
             bearerAuth: {
                 type: 'http',
                 scheme: 'bearer',
+                bearerFormat: 'JWT',
                 description: 'Autenticação por token Bearer'
             }
         }
@@ -91,5 +93,5 @@ const outputFile = './swagger-output.json';
 const endpointsFiles = ['./app.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    require('./app');
+    require('./app'); // Inicia o servidor após a geração do arquivo Swagger
 });

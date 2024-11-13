@@ -12,4 +12,18 @@ exports.login = async (req, res) => {
     }
 
     return res.status(200).json({ token });
+
+    /* 
+    #swagger.tags = ['Login']
+    #swagger.summary = 'Realiza o login e retorna um token'
+    #swagger.responses[200] = {
+        schema: {'token':'Bearer string'}
+    }
+    #swagger.responses[401] = {
+        $ref: '#/components/responses/Unauthorized'
+    }
+    #swagger.responses[500] = {
+        $ref: '#/components/responses/InternalServerError'
+    }
+    */
 }
