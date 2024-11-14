@@ -30,10 +30,12 @@ exports.getContactsByUserId = async (userId) => {
         const data = await fs.readFile('./contacts.json', 'utf-8');
         const contacts = JSON.parse(data);
 
+        // retorna todos os contatos de um mesmo userId
         const userContacts = contacts.filter(c => c.userId === userId);
 
         const user = await userService.getUserById(userId);
 
+        // retorna um json com a chave user, contendo um usuário e a chave contacts com um array de contatos
         return {user, contacts: userContacts};
     } catch(error){
         return null;
@@ -45,6 +47,7 @@ exports.createContact = async (contact) => {
         const data = await fs.readFile('./contacts.json', 'utf-8');
         const contacts = JSON.parse(data);
 
+        // verifica se há algum contato, caso haja retorna o id do último contato + 1, caso contrário retorna 1
         const contactId = contacts.length > 0 ? contacts[contacts.length - 1].id + 1 : 1;
 
         const user = await userService.getUserById(contact.userId);
@@ -76,6 +79,7 @@ exports.updateContact = async (id, updatedContact) => {
             return null;
         }
 
+        // sobrescreve as informações do contato[index] com updatedContact, mantendo as chaves não existentes em updatedContact
         contacts[index] = {...contacts[index], ...updatedContact};
 
         await fs.writeFile('./contacts.json', JSON.stringify(contacts));
