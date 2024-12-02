@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <form method="POST" action="/login">
+        <label for="username">Usuário:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label for="method">Método de autenticação:</label>
+        <select name="method" required>
+          <option value="cookie">Cookie</option>
+          <option value="session">Sessão</option>
+        </select>
+        <br>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>
