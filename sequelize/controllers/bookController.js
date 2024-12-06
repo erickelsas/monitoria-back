@@ -76,6 +76,10 @@ exports.updateBook = async(req, res) => {
     const bookId = req.params.id;
     const book = req.body;
 
+    if (id === null || id < 1 || isNaN(parseInt(id))) {
+        return res.status(400).json({ message: 'Id digitado inválido.' });
+    }
+
     try {
         const updatedBook = await bookService.updateBook(bookId, book);
 
