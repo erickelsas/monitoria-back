@@ -2,19 +2,11 @@ const express = require('express');
 const app = express();
 const { sequelize } = require('./models');
 
-const { bookRoutes } = require('./routes');
-
-sequelize.sync({ alter: true })
-    .then(() => {
-        console.log('Banco de dados sincronizado!');
-    })
-    .catch((error) => {
-        console.error('Erro ao sincronizar banco de dados: ', error);
-    })
-
+const { bookRoutes, installRoute } = require('./routes');
     app.use(express.json());
 
     app.use(bookRoutes);
+    app.use(installRoute);
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {

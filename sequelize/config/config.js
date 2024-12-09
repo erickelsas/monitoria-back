@@ -1,4 +1,4 @@
-require('dotenv').config({ path: './docker/.env'});
+require('dotenv').config({ path: './config/.env.postgres'});
 
 module.exports = {
     database: process.env.DB_NAME,
@@ -6,5 +6,5 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT || 5432,
-    dialect: 'postgres'
+    dialect: process.env.DIALECT || 'postgres'
 }

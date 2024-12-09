@@ -35,6 +35,12 @@ exports.getStudentById = async (id) => {
 
 exports.createStudent = async (student) => {
   try {
+    if(student.hasOwnProperty('course')){
+      const course = await Course.findOne({ where: { name: student.course }});
+      
+      student.courseId = course.id;
+    }
+
     const newStudent = await Student.create(student);
     return await Student.findOne({
       where: { id: newStudent.id },
