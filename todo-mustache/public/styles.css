@@ -1,0 +1,79 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+.concluida {
+    text-decoration: line-through;
+    color: gray;
+}
+
+button {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn-apagar {
+    background: red;
+    color: white;
+}
+
+.btn-apagar:hover {
+    background: darkred;
+}
+
+.btn-concluir {
+    background: green;
+    color: white;
+}
+
+.btn-concluir:hover {
+    background: darkgreen;
+}
+
+input {
+    padding: 5px;
+    width: 70%;
+}
+
+/* Novo estilo para truncar o texto */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li .title {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 60%; 
+    text-align: left;
+}

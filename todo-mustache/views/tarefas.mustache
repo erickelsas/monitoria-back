@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <ul id="listaTarefas">
+    <!-- Puxa as tarefas envias no res.render na tarefasController.js -->
+        {{#tarefas}}
+        <!-- Identifica se a propriedade 'concluida' é verdadeira ou não e seta o data-id com o id enviado no JSON -->
+        <li class="{{#concluida}}concluida{{/concluida}}" data-id="{{id}}">
+            <p class="title">{{titulo}}</p> 
+            <div class="buttons-container">
+                <button class="btn-concluir" data-id="{{id}}">Concluir</button>
+                <button class="btn-apagar" data-id="{{id}}">Apagar</button>
+            </div>
+        </li>
+        {{/tarefas}}
+    </ul>
+
+    <h2>Adicionar Nova Tarefa</h2>
+    <input type="text" id="titulo" placeholder="Nome da Tarefa">
+    <button id="btnAdicionar">Adicionar</button>
+
+    <script src="/script.js"></script>
+</body>
+</html>
