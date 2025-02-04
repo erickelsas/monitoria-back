@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <ul id="listaTarefas">
+        {{#tarefas}}
+        <li class="{{#concluida}}concluida{{/concluida}}" data-id="{{id}}">
+            <!-- Aplique a classe "title" ao título para truncar textos longos -->
+            <span class="title">{{titulo}}</span>
+            <div class="buttons-container">
+                <!-- Formulário para marcar como concluída -->
+                <form action="/concluir/{{id}}" method="POST" style="display:inline;">
+                    <button class="btn-concluir" type="submit">Concluir</button>
+                </form>
+                <!-- Formulário para apagar tarefa -->
+                <form action="/remover/{{id}}" method="POST" style="display:inline;">
+                    <button class="btn-apagar" type="submit">Remover</button>
+                </form>
+            </div>
+        </li>
+        {{/tarefas}}
+    </ul>
+
+    <h2>Adicionar Nova Tarefa</h2>
+    <form action="/adicionar" method="POST">
+        <input type="text" name="titulo" id="titulo" placeholder="Nome da Tarefa" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <script src="/script.js"></script>
+</body>
+</html>
